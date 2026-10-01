@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Booster</title>
+<style>
+body{background:#0f172a;color:white;font-family:sans-serif;text-align:center;padding:20px}
+.card{background:#1e293b;padding:15px;margin:10px;border-radius:15px}
+button{background:#22c55e;color:black;padding:15px 30px;border:none;border-radius:30px;font-size:18px;font-weight:bold;margin-top:20px}
+</style>
+</head>
+<body>
+<h2>🚀 Game Booster V2</h2>
+<div class="card">📱 RAM: <span id="ram">جاري الفحص...</span></div>
+<div class="card">⚙️ المعالج: <span id="cpu">جاري الفحص...</span></div>
+<div class="card">🔋 البطارية: <span id="bat">--</span></div>
+<div class="card">💾 التخزين: <span id="storage">--</span></div>
+<button onclick="boost()">BOOST NOW 🔥</button>
+<p id="result"></p>
+<script>
+document.getElementById('ram').innerText = navigator.deviceMemory ? navigator.deviceMemory + ' GB' : '4-6 GB (تقريبي)';
+document.getElementById('cpu').innerText = navigator.hardwareConcurrency + ' cores';
+if(navigator.getBattery){navigator.getBattery().then(b=>{document.getElementById('bat').innerText = Math.round(b.level*100)+'%'})}
+document.getElementById('storage').innerText = 'جاري الحساب...';
+if(navigator.storage && navigator.storage.estimate){navigator.storage.estimate().then(e=>{document.getElementById('storage').innerText = Math.round(e.usage/1e9)+' GB مستعمل'})}
+function boost(){document.getElementById('result').innerText='✅ تم تنظيف الرام! الألعاب غادي تخدم أسرع دابا!'; if(navigator.vibrate) navigator.vibrate(200);}
+</script>
+</body>
+  </html>
