@@ -1,0 +1,5 @@
+{
+  "name": "game-booster-v2",
+  "version": "1.0.0",
+  "cordova": { "platforms": ["android"] }
+}
